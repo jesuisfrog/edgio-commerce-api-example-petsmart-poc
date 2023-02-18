@@ -1,7 +1,8 @@
 {
-  "name": "edgio-ecommerce-api-example",
+  "name": "edgio-ecommerce-api-example-petsmart-poc",
   "scripts": {
     "edgio:deploy": "edgio deploy",
+    "deploy": "edg deploy -t=petsmart",
     "format": "prettier '**/*' --write --ignore-unknown"
   },
   "devDependencies": {
