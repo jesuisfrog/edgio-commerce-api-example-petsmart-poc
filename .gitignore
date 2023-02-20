@@ -4,3 +4,5 @@ node_modules
 /products
 data.js
 categories.js
+dogfood.js
+catfood.js
