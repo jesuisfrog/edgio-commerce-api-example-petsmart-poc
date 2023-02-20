@@ -90,11 +90,7 @@ const getDogFood = async () => {
                     console.log('Image Not Found')
                 })
         })
-        dogfood[pdpLinks[i]['name']]['images'].sort((a, b) => {
-            const aIndex = parseInt(a.url.match(/(\d+)\.png$/)[1]);
-            const bIndex = parseInt(b.url.match(/(\d+)\.png$/)[1]);
-            return aIndex - bIndex;
-        });
+        
         const productDataUrl = `https://www.petsmart.com/dw/shop/v18_8/products/${sku}?client_id=11d422c1-e017-4692-8ade-c0d36191da29`
         try {
             const productData =  await axios.get(productDataUrl)
@@ -103,6 +99,7 @@ const getDogFood = async () => {
         } catch (error) {
             console.log("error: " + error)
         }
+        // console.log(dogfood[pdpLinks[i]['name']]['images'])
     }
     try {
         fs.outputFile('./dogfood.js', `export const dogfood= ${JSON.stringify(dogfood)}`)
