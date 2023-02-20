@@ -27,7 +27,7 @@ const getDogFood = async () => {
         if(i > 17) return;
         let itemName = $(el).find('.product-name').find('h3').text()
         pdpLinks[$(el).find('a').attr('href')] = { name: itemName }
-        let itemPrice = $(el).find('.price-regular').attr('data-gtm-price')
+        let itemPrice = $(el).find('.price-regular').attr('data-gtm-price') || $(el).find('.price-sales').html().slice($(el).find('.price-sales').html().indexOf('$') + 1).replace(/\n/g, '')
         let slug = itemName
             .toLowerCase()
             .replace(/ /g, '-')
@@ -94,7 +94,8 @@ const getDogFood = async () => {
         const productDataUrl = `https://www.petsmart.com/dw/shop/v18_8/products/${sku}?client_id=11d422c1-e017-4692-8ade-c0d36191da29`
         try {
             const productData =  await axios.get(productDataUrl)
-            const description = productData.data.long_description;
+            let description = productData.data.long_description;
+            description = description.substring(0, description.indexOf('<br>\r\n\r\n'))
             dogfood[pdpLinks[i]['name']]['description'] = description;
         } catch (error) {
             console.log("error: " + error)
@@ -119,7 +120,7 @@ const getCatFood = async () => {
         if (i > 17) return;
         let itemName = $(el).find('.product-name').find('h3').text()
         pdpLinks[$(el).find('a').attr('href')] = { name: itemName }
-        let itemPrice = $(el).find('.price-regular').attr('data-gtm-price')
+        let itemPrice = $(el).find('.price-regular').attr('data-gtm-price') || $(el).find('.price-sales').html().slice($(el).find('.price-sales').html().indexOf('$')+1).replace(/\n/g, '')
         let slug = itemName
             .toLowerCase()
             .replace(/ /g, '-')
@@ -185,7 +186,8 @@ const getCatFood = async () => {
         const productDataUrl = `https://www.petsmart.com/dw/shop/v18_8/products/${sku}?client_id=11d422c1-e017-4692-8ade-c0d36191da29`
         try {
             const productData = await axios.get(productDataUrl)
-            const description = productData.data.long_description;
+            let description = productData.data.long_description;
+            description = description.substring(0, description.indexOf('<br>\r\n\r\n'))
             catfood[pdpLinks[i]['name']]['description'] = description;
         } catch (error) {
             console.log("error: " + error)
