@@ -231,7 +231,7 @@ const getCanadianDogFood = async () => {
             name: itemName,
             price: {
                 value: itemPrice,
-                currencyCode: "$",
+                currencyCode: "CAD",
             },
         }
     })
@@ -335,7 +335,7 @@ const getCanadianCatFood = async () => {
             name: itemName,
             price: {
                 value: itemPrice,
-                currencyCode: "$",
+                currencyCode: "CAD",
             },
         }
     })
