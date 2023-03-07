@@ -200,12 +200,6 @@ const getCatFood = async () => {
     } catch (e) {
         console.log(e)
     }
-    // allproducts = Object.assign({}, catfood, dogfood);
-    // try {
-    //     fs.outputFile('./allproducts.js', `export const allproducts= ${JSON.stringify(allproducts)}`)
-    // } catch (e) {
-    //     console.log(e)
-    // }
 }
 
 const getCanadianDogFood = async () => {
@@ -412,8 +406,9 @@ const getCanadianCatFood = async () => {
     } catch (e) {
         console.log(e)
     }
-    allproducts = Object.assign({}, catfood, dogfood, catfoodCA, dogfoodCA);
+    
     try {
+        allproducts = Object.assign({}, catfood, dogfood, catfoodCA, dogfoodCA);
         fs.outputFile('./allproducts.js', `export const allproducts= ${JSON.stringify(allproducts)}`)
     } catch (e) {
         console.log(e)
