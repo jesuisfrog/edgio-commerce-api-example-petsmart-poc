@@ -406,17 +406,18 @@ const getCanadianCatFood = async () => {
     } catch (e) {
         console.log(e)
     }
-    
+}
+
+const getAllProducts = async () =>{
+
+    await Promise.all([getDogFood(), getCatFood(), getCanadianDogFood(), getCanadianCatFood()]);
+
     try {
         allproducts = Object.assign({}, catfood, dogfood, catfoodCA, dogfoodCA);
         fs.outputFile('./allproducts.js', `export const allproducts= ${JSON.stringify(allproducts)}`)
     } catch (e) {
         console.log(e)
     }
-}
+} 
 
-
-getDogFood()
-getCatFood()
-getCanadianDogFood()
-getCanadianCatFood()
+getAllProducts();
